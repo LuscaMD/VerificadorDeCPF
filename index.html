@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Verificador de CPF</title>
+</head>
+<body>
+    <form>
+        <h2 class="titulo">Verificador de CPF</h2>
+        <br>
+        <input type="number" name="cpf" id="cpf">
+        <input type="submit" value="Verificar" onclick="verificar(event)">
+        <h3 class="digitado">CPF digitado: <span id="cpfDigitado"></span></h3>
+        <h2 class="resultado">
+        <p id="StatusFinal">Status do CPF</p>
+        </h2>
+    </form>
+
+    <script type="text/javascript">
+
+        function verificar(event,cpfOriginal,soma1,soma2,resto1,resto2,DV1,DV2,vetorCPF,vetorCPF2) {
+            
+            event.preventDefault();
+
+            var cpfOriginal = document.getElementById("cpf").value;
+            var soma1 = soma2 = resto1 = resto2 = DV1 = DV2 = 0;
+
+            document.getElementById("cpfDigitado").innerHTML = cpfOriginal;
+            vetorCPF  = cpfOriginal.split("");
+            vetorCPF2 = cpfOriginal.split("");
+
+            soma1 = vetorCPF[0] * 10 + vetorCPF[1] * 9 + vetorCPF[2] * 8 + vetorCPF[3] * 7 + vetorCPF[4] * 6 + vetorCPF[5] * 5 + vetorCPF[6] * 4 + vetorCPF[7] * 3 + vetorCPF[8] * 2;
+
+            resto1 = soma1%11;
+
+            if(resto1<2){
+                DV1 = 0;    
+            }
+            else{
+                DV1 = 11 - resto1;
+            }
+
+            vetorCPF[9] = DV1;
+
+            soma2 = vetorCPF[0] * 11 + vetorCPF[1] * 10 + vetorCPF[2] * 9 + vetorCPF[3] * 8 + vetorCPF[4] * 7 + vetorCPF[5] * 6 + vetorCPF[6] * 5 + vetorCPF[7] * 4 + vetorCPF[8] * 3 + vetorCPF[9] * 2;
+
+            resto2 = soma2%11;
+
+            if(resto2<2){
+                DV2 = 0;
+            }
+            else{
+                DV2 = 11 - resto2;
+            }
+
+            if (vetorCPF2[9] == DV1 && vetorCPF2[10] == DV2){
+                //cpf valido
+                document.getElementById("StatusFinal").style.color= "#31FF4E";
+                document.getElementById("StatusFinal").innerHTML = "CPF Válido";
+            }
+            else{
+                //cpf invalido
+                document.getElementById("StatusFinal").style.color= "#FF0F0F";
+                document.getElementById("StatusFinal").innerHTML = "CPF Inválido";
+            }
+        }       
+    </script>
+</body>
+</html>

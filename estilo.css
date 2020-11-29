@@ -1,0 +1,51 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background: #2ecc71;
+}
+
+form{
+    background: white;
+    max-width: 500px;
+    width: 70%;
+    padding: 20px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 10px solid #27ae60;
+}
+
+form input[type="number"]{
+    width: 75%;
+    height: 45px;
+    border: 2px solid #2c3e50;
+    padding-left: 10px;
+    margin:10px 0; 
+}
+
+form input[type="submit"]{
+    width: 20%;
+    height: 45px;
+    border: 2px solid #2c3e50;
+
+}
+
+.digitado{
+    color: #3498db;
+}
+
+
+.resultado{
+    color: #e67e22;
+}
+
+.titulo{
+    text-align: center;
+    color: #34495e;
+}
